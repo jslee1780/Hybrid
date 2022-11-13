@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <div id="app">
+        <button @click="loveCount++">고백하기</button>
+        <p>{{boy}}가 {{girl}}에게 <b v-html="style"></b>했다가 {{loveCount}}번 차였다.</p>
+    </div>
+
+    <script>
+        const {createApp} = Vue;
+        createApp({
+            data(){
+                return {
+                    boy: "김현규",
+                    girl: "?",
+                    loveCount: 0,
+                    style:'<span style="color:red;">고백</span>'
+                }
+            },
+            mounted(){
+                console.log("마운트");
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
