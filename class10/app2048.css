@@ -1,0 +1,33 @@
+#app{
+    position: relative;
+    width: 590px;
+    height: 590px;
+    background-color: beige;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding : 10px;     
+    border-radius: 20px;      
+}
+.backblock{            
+    background-color: burlywood;
+    text-align: center;   
+    line-height: 1.8;
+    font-size: 70px;
+    font-family: Roboto;
+    border-radius: 20px;
+}
+.blockPrefab{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 120px;
+    height: 120px;
+    background-color: brown;
+    text-align: center;            
+    line-height: 1.6;
+    font-size: 70px;
+    font-family: Roboto;
+    border-radius: 20px;
+}
