@@ -12,6 +12,13 @@ function gameStart()
         [0, 0, 0, 0]
     ];
 
+    /*map = [
+        [2, 4, 2, 4],
+        [4, 2, 4, 2],
+        [2, 4, 2, 0],
+        [4, 2, 4, 4]
+    ];*/
+
     for (let i = 0; i < rows; i++)
     {
         for (let j = 0; j < columns; j++)
@@ -27,6 +34,10 @@ function gameStart()
 
 function init()
 {
+    count = 0;
+    var score = document.getElementById("count");
+    score.innerHTML = "score : " + count;
+
     for (let i = 0; i < rows; i++)
     {
         for (let j = 0; j < columns; j++)
@@ -34,6 +45,7 @@ function init()
             map[i][j] = 0;
             let block = document.getElementById(i.toString() + j.toString())
             block.innerText = "";
+            block.classList.remove("x2", "x4", "x8", "x16", "x32", "x64", "x128", "x256", "x512", "x1024", "x2048");
         }
     }
 
@@ -56,17 +68,22 @@ function init()
 
 function gameclear()
 {
+    var clear = document.getElementById("gameresult");
+    clear.innerHTML = "게임 클리어";
     document.querySelector(".background").className = "background show";
 }
 
 function gameover()
 {
+    var over = document.getElementById("gameresult");
+    over.innerHTML = "게임 오버";
     document.querySelector(".background").className = "background show";
 }
 
+document.querySelector(".popup").addEventListener("click", close);
+
 function close()
 {
-    console.log(1);
     document.querySelector(".background").className = "background";
 }
 
@@ -76,15 +93,51 @@ function checkclear()
     {
         for (let j = 0; j < columns; j++)
         {
-            map[i][j] = 2048;
-            gameclear();
+            if(map[i][j] == 2048)
+            {
+                gameclear();
+            }
         }
+    }
+}
+
+function checkgameover()
+{
+    var gameOver = true;
+    for (let i = 0; i < rows; i++)
+    {
+        for (let j = 0; j < columns; j++)
+        {
+            if (map[i][j] == map[i][j + 1])
+            {
+                gameOver = false;
+                break;
+            }
+        }
+    }
+
+    for (let j = 0; j < columns; j++)
+    {
+        for (let i = 0; i < rows; i++)
+        {
+            if (map[i][j] == map?.[i + 1]?.[j])
+            {
+                gameOver = false;
+                break;
+            }
+        }
+    }
+    if (gameOver)
+    {
+        gameover();
     }
 }
 
 function addcount()
 {
     count += 1;
+    var score = document.getElementById("count");
+    score.innerHTML = "score : " + count;
 }
 
 function setcoord(block, num) 
@@ -95,7 +148,11 @@ function setcoord(block, num)
     if (num > 0)
     {
         block.innerText = num.toString();
-    }    
+        if (num <= 2048)
+        {
+            block.classList.add("x" + num.toString());
+        } 
+    }   
 }
 
 function filter(row)
@@ -203,6 +260,7 @@ function addblock2()
             map[row][column] = 2;
             let block = document.getElementById(row.toString() + column.toString())
             block.innerText = "2";
+            block.classList.add("x2");
             found = true;
         }
     }
@@ -221,6 +279,7 @@ function addblock4()
             map[row][column] = 4;
             let block = document.getElementById(row.toString() + column.toString())
             block.innerText = "4";
+            block.classList.add("x4");
             found = true;
         }
     }
@@ -236,21 +295,29 @@ function keylog(e)
             moveleft();
             addblock2();
             addcount();
+            checkclear();
+            checkgameover();
             break;
         case 'ArrowRight':
             moveright();
             addblock2();
             addcount();
+            checkclear();
+            checkgameover();
             break;
         case 'ArrowUp':
             moveup();
             addblock2();
             addcount();
+            checkclear();
+            checkgameover();
             break;
         case 'ArrowDown':
             movedown();
             addblock2();
             addcount();
+            checkclear();
+            checkgameover();
             break;
         default:            
             break;
