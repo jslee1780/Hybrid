@@ -1,0 +1,94 @@
+#app 
+{ 
+    position: relative;
+    top: 100px;
+
+    width: 400px;
+    height: 400px;
+
+    background-color: #cdc1b5;
+    border: 6px solid #bbada0;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#start 
+{
+    width: 100px;
+    height: 50px;
+
+    background-color: beige;
+    border: 5px solid black;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.block 
+{
+    width: 90px;
+    height: 90px;
+    border: 5px solid #bbada0;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .show 
+  {
+    opacity: 1;
+    z-index: 1000;
+    transition: all 0.5s;
+  }
+
+  .window 
+  {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .popup 
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+
+    width: 100px;
+    height: 100px;
+
+    transform: translate(-50%, -40%);
+  }
+
+  .show .popup 
+  {
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+  }

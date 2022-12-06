@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        div
+        {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script src="login.js"></script>
+    <div>
+        <label>아이디 : <input id="cr_id" type="text"></label>
+    </div>
+    <div>
+        <label>비밀번호 : <input id="cr_pw" type="text"></label>
+    </div>
+    <div>
+        <label>비밀번호 확인 : <input id="check_pw" type="text"></label>
+    </div>
+    <div>
+        <input type="button" value="계정생성" onclick="create_id();">
+        <input type="button" value="뒤로가기" onclick="back();">
+    </div>
+</body>
+</html>
